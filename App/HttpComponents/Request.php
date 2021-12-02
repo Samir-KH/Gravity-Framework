@@ -1,7 +1,7 @@
 <?php
 /**
- * This file is a part of this mini framwork
- * This class is a part of httpComponents of this mini framwork in another word the core
+ *
+ * This class is a part of httpComponents
  * 
  */
 namespace App\HttpComponents;
@@ -31,20 +31,24 @@ class Request{
     public static function createFromGlobales()
     {
         $request = new Request();
-        $request->setUrl(Request::urlFormat($_SERVER["REQUEST_URI"]));
+        //$request->setUrl(Request::urlFormat($_SERVER["REQUEST_URI"]));
+        $url = '/';
+        if (isset($_SERVER["PATH_INFO"])){
+            $url = $_SERVER["PATH_INFO"];
+        }
+        $request->setUrl($url);
         $request->setMethod($_SERVER["REQUEST_METHOD"]);
         $request->setRequest($_POST);
         $request->setQuery($_GET);
-        //on utilise pour le moment $_SERVER
         $request->setHeaders($_SERVER);
         return $request;
     }
 
     public function request($param)
     {
-        if (isset($this->request[$param]))
+        if (isset($this->request_bag[$param]))
         {
-           return  htmlspecialchars($this->request[$param]);
+           return  htmlspecialchars($this->request_bag[$param]);
         }
         return NULL;
     }
@@ -92,7 +96,6 @@ class Request{
     {
         $this->headers_bag = $headers_bag;
     }
-
     public function getHeader($header)
     {
         if (isset($this->headers_bag[$header]))

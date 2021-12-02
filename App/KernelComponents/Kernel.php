@@ -16,6 +16,8 @@ use App\KernelComponents\Exceptions\FailedToLoadControllerException;
 use App\KernelComponents\Exceptions\ControllerMustReturnResponseException;
 use App\KernelComponents\Exceptions\UrlNotMatchException;
 use App\Configuration\RouterConfig;
+use App\Configuration\DataBaseConfig;
+use App\DataBase\DataBaseConnectorManager;
 
 
 
@@ -37,6 +39,12 @@ class Kernel{
         $this->JsonResolver->prepare($routesContent, RouterConfig::$routes);
         return $this->JsonResolver->resolve();
     }
+    private function getDatabases()
+    {
+        $dataBasesContent = DataBaseConfig::getRoutesContent();
+        $this->JsonResolver->prepare($dataBasesContent, DataBaseConfig::$databases);
+        return $this->JsonResolver->resolve();
+    }
     function handleAndThrowExceptions($request)
     {
         $url = $request->getRequestUrl();
@@ -46,7 +54,9 @@ class Kernel{
 
         if ($this->router->urlHandle()){
             $result = $this->router->getResult();
-            $controller = $this->loadController($result["controller"],$request, $routes);
+            $databases = $this->getDatabases();
+            $connectrorManager = new DataBaseConnectorManager($databases);
+            $controller = $this->loadController($result["controller"],$request, $routes,$connectrorManager);
             $response = $this->executeController($controller, $result["method"],$result["parametres"]);
 
             if( gettype($response)!="object" or( get_parent_class($response) != "App\HttpComponents\Response" and get_class($response) != "App\HttpComponents\Response" ))
@@ -56,11 +66,11 @@ class Kernel{
         throw new UrlNotMatchException();
     }
 
-    public function loadController($controller_name, $request, $routes)
+    public function loadController($controller_name, $request, $routes,$connectrorManager)
     {
         try{
             $class = 'Controller\\'.$controller_name;
-            return new $class($request, $routes);
+            return new $class($request, $routes,$connectrorManager,$connectrorManager);
         }
         catch (Exception $e ){
            throw new FailedToLoadControllerException($controller_name);

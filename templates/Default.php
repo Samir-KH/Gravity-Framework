@@ -28,12 +28,12 @@
                 
                 <img class="doc" src="<?php provide('images/doc.png')?>" alt="doc">
                 <span><a href="#">documention</a></span>
-                <span class="s3"> Read the documentaion and create your first page</span></li>
+                <span class="s3"> Read the documentaion and create your first app</span></li>
             <li class="container">
                 
             <img class="doc" src="<?php provide('images/tuto.png')?>" alt="doc">
             <span><a href="#">Tutorial</a></span>
-            <span class="s3"> Whatch somme tutorial to create your first page</span>
+            <span class="s3"> Whatch some tutorials to create your first app</span>
             </li>
         </ul>
     </section>

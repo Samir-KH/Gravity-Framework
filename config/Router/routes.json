@@ -1,38 +1,8 @@
 {
-    "route_name" : {
-        "url_method":"GET",
-        "url" : "/level1/level2/{ant:film}/{n:quality}",
-        "controller" : "FilmController",
-        "method" : "film"
-    },
-    "streaming" : {
-        "url_method":"GET",
-        "url" : "/film",
-        "controller" : "StreamController",
-        "method" : "stream"
-    },
-    "home" : {
+    "default" : {
         "url_method":"GET",
         "url" : "/",
         "controller" : "DefaultController",
         "method" : "defaultMethode"
-    },
-    "filmApp" : {
-        "url_method":"GET",
-        "url" : "/film/watch/{an:filmName}",
-        "controller" : "WatchController",
-        "method" : "index"
-    },
-    "film" : {
-        "url_method":"GET",
-        "url" : "/film/watchlist/{a:name}-{n:number}",
-        "controller" : "controller_name",
-        "method" : "method_name"
-    },
-    "route_name2" : {
-        "url_method":"POST",
-        "url" : "/level1/level2/{i:param1}/{s:param2}",
-        "controller" : "controller_name",
-        "method" : "method_name"
     }
 }

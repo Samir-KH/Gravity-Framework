@@ -9,15 +9,19 @@ namespace App\Controller;
 
 use App\HttpComponents\Response;
 use App\Templates\TemplatesManager;
+//use App\DataBase\DataBaseConnector;
+
 class AbstractController{
 
     public $request;
     public $routes ;
+    public $cM ; 
 
-    public function __construct($request,$routes)
+    public function __construct($request,$routes,$dataBaseConnectorManager)
     {
         $this->request = $request;
         $this->routes = $routes;
+        $this->cM = $dataBaseConnectorManager;
     }
 
     public function render($content)
@@ -36,6 +40,13 @@ class AbstractController{
     {
         $response = new Response();
         $response->setContent( TemplatesManager::getTemplateContent($view, $parametres,$this->routes) );
+        return $response;
+    }
+    public function redirectionToRoute($route,$domain)
+    {
+        $url_route = $this->routes->$route->url;
+        $response = new Response();
+        $response->setHeader("Location",$domain.$url_route);
         return $response;
     }
 

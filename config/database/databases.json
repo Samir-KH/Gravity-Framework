@@ -1,0 +1,8 @@
+{
+    "default" : {
+        "host":"",
+        "name" : "",
+        "user" : "",
+        "password" : ""
+    }
+}
