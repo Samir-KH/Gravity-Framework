@@ -1,0 +1,123 @@
+*{
+    margin: 0px;
+    padding: 0px;
+   
+}
+body{
+    font-family: 'Bahnschrift';
+}
+
+.header{
+    background-color: rgb(26, 26, 26);
+    color: white;
+    padding: 4px;
+}
+
+.logo-name{
+    margin-left: 10px;
+}
+
+.logo-name img{
+    width: 20px;
+    position: relative;
+    top: 1px;
+}
+.logo-name span{
+    position: relative;
+    top: -5px;
+}
+
+.logo-name .ver{
+    font-style: italic;
+    font-size: 11px;
+    color: #e56b6f;
+}
+
+
+
+.section-1{
+    background-color:  #f2e9e4;
+    min-height: 450px;
+}
+
+.section-2 ul{
+    margin-top: 22px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.container{
+    width: max-content;
+    margin:  0 auto;
+    padding: 6px;
+    list-style: none;
+}
+
+.section-1 .container img{
+    width: 200px;
+    display: block;
+    margin: auto;
+}
+
+.container span{
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+}
+.s1{
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 35px;
+}
+.container .s3{
+    font-size: 20px;
+   
+}
+
+
+
+.container .s4{
+    font-size: 25px;
+    margin-top: 20px;
+    padding: 5px 10px;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+
+.section-2{
+    background-color: white;
+    min-height: 300px;
+}
+
+.container .doc{
+    width: 70px;
+    display: block;
+    margin: 10px auto;
+}
+
+.container span a{
+    color:#e56b6f;
+    font-size: 25px;
+}
+
+.footer{
+    background-color: #212529;
+    color: white;
+}
+
+.footer .foot-info{
+    width: max-content;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+.footer .foot-info div{
+    font-size: 13px;
+    padding: 2px;}

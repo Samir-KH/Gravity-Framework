@@ -1,0 +1,5 @@
+type :
+n : number;
+a : alpha;
+an : alphanum;
+ant : alphanum avec - et _;  
